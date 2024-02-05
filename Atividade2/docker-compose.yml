@@ -1,0 +1,25 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "3601:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+    links: 
+      - postgres
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_NAME: postgres
+      POSTGRES_USER: exemplo
+      POSTGRES_PASSWORD: exemplo
+    ports:
+      - "3600:5432"
+    
+#docker compose up -d  docker compose stop e docker compose down
+
