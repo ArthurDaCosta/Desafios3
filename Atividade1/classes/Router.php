@@ -29,7 +29,13 @@ class Router
     {
         http_response_code(200);
         if ($this->getMethod() === 'POST') {
-            Controller::getQuestions();
+            if (isset($_SESSION['questions']))
+            {
+                
+            } else {
+                Controller::getQuestions();
+            }
+            
         }    
     }
     

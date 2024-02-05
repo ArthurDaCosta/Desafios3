@@ -2,6 +2,7 @@
 
 class Player {
     private string $name;
+    private string $score;
 
     function setName($name)
     {
@@ -12,4 +13,14 @@ class Player {
     {
         return $this->name;
     }
+
+    function setScore($score)
+    {
+        $this->score = $score;
+    }
+
+    function getScore()
+    {
+        return $this->score;
+    }   
 }

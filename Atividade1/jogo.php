@@ -19,12 +19,10 @@ $totalPaginas = count($_SESSION['questions']);
 
 if(isset($_GET['page'])){
     $page = filter_input(INPUT_GET, "page", FILTER_VALIDATE_INT)-1;
-    $_SESSION['page2'] = $page+1;
 }
 
 if(!$page||$page<0||$page>$totalPaginas-1){
     $page = 0;
-    $_SESSION['page2'] = $page;
 }
 
 ?>
@@ -57,10 +55,10 @@ if(!$page||$page<0||$page>$totalPaginas-1){
     <div class="list-options">
         <?php
         echo "<ul>";
-        echo "<li>" . $_SESSION['questions'][$page]->getQuestion() . "</li>";
-        $shuffle = shuffle($_SESSION['questions'][$page]->answers);
-        foreach ($_SESSION['questions'][$page]->getAnswers() as $answer) {
-            echo "<li>" . $answer . "</li>";
+        echo "<li>" . $_SESSION['questions'][$page]['question'] . "</li>";
+        $shuffle = shuffle($_SESSION['questions'][$page]['answers']);
+        foreach ($_SESSION['questions'][$page]['answers'] as $answer) {
+           echo "<input type=button value=".$answer." onClick=>";
         }
         echo "<ul>";
         ?>
@@ -73,7 +71,7 @@ if(!$page||$page<0||$page>$totalPaginas-1){
             } else {
                 echo "<nobr><a style='visibility: hidden'> << Anterior </a>";
             }
-            foreach ($arrayPokemon as $key => $value) {
+            foreach ($_SESSION['questions'] as $key => $value) {
                 if($key==$page){
                     $verifyActive= "active";
                 } else{
@@ -88,6 +86,9 @@ if(!$page||$page<0||$page>$totalPaginas-1){
             }   
 
         ?>
+    </div>
+    <div class="voltar">
+        <input type="button" value="Terminar" onClick="$_SESSION['terminar']=1"> 
     </div>
     <div class="voltar">
         <input type="button" value="Voltar" onClick="history.go(-1)"> 

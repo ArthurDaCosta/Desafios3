@@ -22,8 +22,9 @@ class Controller
             $question->setCorrectAnswer($result['correct_answer']);
             $question->setIncorrectAnswers($result['incorrect_answers']);
             $question->setAnswers($result['incorrect_answers'], $result['correct_answer']);
-            $questions[] = $question;
+            $questions[] = (array) $question;
         }
+
 
         
         $_SESSION['questions'] = $questions;

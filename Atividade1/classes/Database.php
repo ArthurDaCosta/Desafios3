@@ -24,7 +24,8 @@ class database
         );");
         
         pg_query($this->connection, "CREATE TABLE IF NOT EXISTS public.players (
-            'name' NULL
+            'name' NULL,
+            'score' NULL
         );");
     }
 
