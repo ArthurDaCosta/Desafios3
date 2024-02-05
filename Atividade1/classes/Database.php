@@ -13,37 +13,19 @@ class database
 
     function createTables()
     {
-        $exist = pg_fetch_row(pg_query($this->connection, 
-            "SELECT EXISTS ( SELECT * 
-            FROM INFORMATION_SCHEMA.TABLES 
-            WHERE TABLE_SCHEMA = 'public' 
-            AND  TABLE_NAME = 'questions')"));
-    
-        if($exist[0] == 'f') 
-        {
-            pg_query($this->connection, "CREATE TABLE public.questions (
-                'type' NOT NULL,
-                difficulty NULL,
-                cattegory NULL,
-                question int4 NULL,
-                correct_answer NULL,
-                incorrect_answers NULL,
-            );");
-        }
-
-         $exist = pg_fetch_row(pg_query($this->connection, 
-            "SELECT EXISTS ( SELECT * 
-            FROM INFORMATION_SCHEMA.TABLES 
-            WHERE TABLE_SCHEMA = 'public' 
-            AND  TABLE_NAME = 'players')"));
-    
-        if($exist[0] == 'f') 
-        {
-            pg_query($this->connection, "CREATE TABLE public.players (
-                'name' NULL
-            );");
-        }
         
+        pg_query($this->connection, "CREATE TABLE IF NOT EXISTS public.questions (
+            'type' NOT NULL,
+            difficulty NULL,
+            cattegory NULL,
+            question int4 NULL,
+            correct_answer NULL,
+            incorrect_answers NULL,
+        );");
+        
+        pg_query($this->connection, "CREATE TABLE IF NOT EXISTS public.players (
+            'name' NULL
+        );");
     }
 
     function select($tableName)

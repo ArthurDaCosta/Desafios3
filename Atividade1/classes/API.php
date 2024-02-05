@@ -4,9 +4,6 @@ class API
 {
     public string $url;
     public string $amount;
-    public string $category;
-    public string $difficulty;
-    public string $type;
 
     function setUrl($url)
     {
@@ -26,35 +23,5 @@ class API
     function getAmount()
     {
         return $this->amount;
-    }
-
-    function setCategory($category)
-    {
-        $this->category = $category;
-    }
-
-    function getCategory()
-    {
-        return $this->category;
-    }
-
-    function setDifficulty($difficulty)
-    {
-        $this->difficulty = $difficulty;
-    }
-
-    function getDifficulty()
-    {
-        return $this->difficulty;
-    }
-
-    function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    function getType()
-    {
-        return $this->type;
     }
 }

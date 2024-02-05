@@ -15,6 +15,18 @@ $router->setRoute($_SERVER['REQUEST_URI']);
 
 $router->verifyMethod();
 
+$totalPaginas = count($_SESSION['questions']);
+
+if(isset($_GET['page'])){
+    $page = filter_input(INPUT_GET, "page", FILTER_VALIDATE_INT)-1;
+    $_SESSION['page2'] = $page+1;
+}
+
+if(!$page||$page<0||$page>$totalPaginas-1){
+    $page = 0;
+    $_SESSION['page2'] = $page;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -44,17 +56,38 @@ $router->verifyMethod();
     </div>
     <div class="list-options">
         <?php
-        foreach ($_SESSION['questions'] as $question) {
-            echo "<ul>";
-            echo "<li>" . $question->getQuestion() . "</li>";
-            $shuffle = shuffle($question->answers);
-            foreach ($question->getAnswers() as $answer) {
-                echo "<li>" . $answer . "</li>";
-            }
-            echo "<ul>";
+        echo "<ul>";
+        echo "<li>" . $_SESSION['questions'][$page]->getQuestion() . "</li>";
+        $shuffle = shuffle($_SESSION['questions'][$page]->answers);
+        foreach ($_SESSION['questions'][$page]->getAnswers() as $answer) {
+            echo "<li>" . $answer . "</li>";
         }
+        echo "<ul>";
         ?>
         
+    </div>
+    <div class="pagination_section">
+        <?php
+            if($page>0){
+                echo "<nobr><a href='?page=" . $page . "'> << Anterior </a>";
+            } else {
+                echo "<nobr><a style='visibility: hidden'> << Anterior </a>";
+            }
+            foreach ($arrayPokemon as $key => $value) {
+                if($key==$page){
+                    $verifyActive= "active";
+                } else{
+                    $verifyActive= "noactive";
+                }
+                echo "<a href='?page=" . ($key+1) . "' class='$verifyActive'>" . ($key+1) . "</a>";
+            }
+            if($page<$totalPaginas-1){
+                echo "<a href='?page=" . ($page+2) . "'>Próxima >></a></nobr>";
+            }  else {
+                echo "<a style='visibility: hidden';>Próxima >></a></nobr>";
+            }   
+
+        ?>
     </div>
     <div class="voltar">
         <input type="button" value="Voltar" onClick="history.go(-1)"> 
