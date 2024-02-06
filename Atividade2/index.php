@@ -37,7 +37,13 @@ while ($exit==false)
         case 2:
             $tarefa = new Tarefas();
             $tarefa->descricao = readline("Descrição da tarefa: ");
-            $tarefa->project_id = readline("ID do projeto: ");
+            if ($database->getOne("Projetos", $idProjeto = readline("ID do Projeto: ")))
+            {
+                $tarefa->project_id = $idProjeto;
+            } else {
+                echo "Projeto não encontrado.\n";
+                break;
+            }
             $tarefa->data_inicio = readline("Data de início da tarefa(Ano/Mês/Dia): ");
             $tarefa->data_fim = readline("Data de fim da tarefa(Ano/Mês/Dia): ");
             $database->insert($tarefa);
@@ -50,36 +56,99 @@ while ($exit==false)
             break;
         case 4:
             $atribuicao = new Atribuicoes();
-            $atribuicao->usuario_id = readline("ID do usuário: ");
-            $atribuicao->tarefa_id = readline("ID da tarefa: ");
+            echo "\n";
+            if ($database->getOne("Usuarios", $idUsuario = readline("ID do Usuário: ")))
+            {
+                $atribuicao->usuario_id = $idUsuario;
+            } else {
+                echo "Usuário não encontrado.\n";
+                break;
+            }
+
+            if ($database->getOne("Tarefas", $idTarefa = readline("ID da tarefa: ")))
+            {
+                $atribuicao->tarefa_id = $idTarefa;
+            } else {
+                echo "Tarefa não encontrada.\n";
+                break;
+            }
+
             $database->insert($atribuicao);
             break;
         case 5:
-            $result = $database->select("Projetos");
-            while ($row = pg_fetch_row($result))
+            $array = $database->getAll("Projetos");
+
+            echo "\n";
+            if ($array == false)
             {
-                echo "ID: $row[0] Nome: $row[1] Descrição: $row[2] Data de início: $row[3] Data de fim: $row[4]\n";
+                echo "Nenhum Projeto cadastrado\n";
+                break;
+            } 
+
+            foreach ($array as $object)
+            {
+                foreach ($object as $key=>$value)
+                {
+                    echo ucfirst($key)." = $value\n";
+                }   
+                echo "\n";
             }
             break;
         case 6:
-            $result = $database->select("Tarefas");
-            while ($row = pg_fetch_row($result))
+            $array = $database->getAll("Tarefas");
+
+            echo "\n";
+            if ($array == false)
             {
-                echo "ID: $row[0] Descrição: $row[1] ID do projeto: $row[2] Data de início: $row[3] Data de fim: $row[4]\n";
+                echo "Nenhuma Tarefa cadastrada\n";
+                break;
+            } 
+
+            foreach ($array as $object)
+            {
+                foreach ($object as $key=>$value)
+                {
+                    echo ucfirst($key)." = $value\n";
+                }   
+                echo "\n";
             }
             break;
         case 7:
-            $result = $database->select("Usuarios");
-            while ($row = pg_fetch_row($result))
+            $array = $database->getAll("Usuarios");
+
+            echo "\n";
+            if ($array == false)
             {
-                echo "ID: $row[0] Nome: $row[1] E-mail: $row[2]\n";
+                echo "Nenhum usuário cadastrado.\n";
+                break;
+            } 
+
+            foreach ($array as $object)
+            {
+                foreach ($object as $key=>$value)
+                {
+                    echo ucfirst($key)." = $value\n";
+                }   
+                echo "\n";
             }
             break;
         case 8:
-            $result = $database->select("Atribuicoes");
-            while ($row = pg_fetch_row($result))
+            $array = $database->getAll("Atribuicoes");
+
+            echo "\n";
+            if ($array == false)
             {
-                echo "ID: $row[0] ID do usuário: $row[1] ID da tarefa: $row[2] Data de atribuição: $row[3]\n";
+                echo "Nenhuma Atribuição cadastrada.\n";
+                break;
+            } 
+
+            foreach ($array as $object)
+            {
+                foreach ($object as $key=>$value)
+                {
+                    echo ucfirst($key)." = $value\n";
+                }   
+                echo "\n";
             }
             break;
         case 9:

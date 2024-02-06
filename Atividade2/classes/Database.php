@@ -44,23 +44,31 @@ class database
         );");
     }
 
-    function select($tableName)
+    function getAll(string $tableName)
+    {
+        $result = pg_query($this->connection, "SELECT * FROM ".strtolower($tableName)."");
+        $result = pg_fetch_all($result);
+        return $result;
+    }
+
+    function getOne(string $tableName, string $id)
+    {
+        $result = pg_query($this->connection, "SELECT * FROM ".strtolower($tableName)." WHERE id = $id");
+        $result = pg_fetch_array($result);
+        return $result;
+    }
+
+    function select(string $tableName)
     {
         $result = pg_query($this->connection, "SELECT * FROM $tableName");
 
         return $result;
     }
 
-    function insert($object)
+    function insert(object $object)
     {
         $objectName = get_class($object);
-        $objectVars = get_object_vars($object);
-        $objectVarsKeys = array_keys($objectVars);
-        $objectVarsValues = array_values($objectVars);
-        $objectVarsKeysString = implode(", ", $objectVarsKeys);
-        $objectVarsValuesString = implode("', '", $objectVarsValues);
-        $objectVarsValuesString = "'" . $objectVarsValuesString . "'";
-        $query = "INSERT INTO $objectName ($objectVarsKeysString) VALUES ($objectVarsValuesString)";
-        pg_query($this->connection, $query);
+        $objectVariables = get_object_vars($object);
+        pg_insert($this->connection, strtolower($objectName), $objectVariables);
     }
 }
