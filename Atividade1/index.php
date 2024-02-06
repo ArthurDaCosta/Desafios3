@@ -27,6 +27,8 @@ $router->verifyMethod();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
     <title>Trivia</title>
+   <link rel="shortcut icon" href="favicon/trivia.png" type="image/x-icon"> 
+
 </head>
 <body>
 

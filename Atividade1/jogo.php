@@ -37,6 +37,7 @@ if(!$page||$page<0||$page>$totalPaginas-1){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
     <title>Trivia</title>
+    <link rel="shortcut icon" href="favicon/trivia.png" type="image/x-icon">
 </head>
 <body>
 
@@ -55,12 +56,25 @@ if(!$page||$page<0||$page>$totalPaginas-1){
     <div class="list-options">
         <?php
         echo "<ul>";
-        echo "<li>" . $_SESSION['questions'][$page]['question'] . "</li>";
+        echo  $_SESSION['questions'][$page]['question'] . "</li>";
         $shuffle = shuffle($_SESSION['questions'][$page]['answers']);
         foreach ($_SESSION['questions'][$page]['answers'] as $answer) {
-           echo "<input type=button value=".$answer." onClick=>";
+        /*   <form action="leaderboard.php" method="GET" enctype="multiplart/form-data">
+            <button type="submit">Leaderboard</button>
+        </form> --> */
+           echo "<ul><input type=radio name=citizenship>".$answer."</ul>";
+//botões de rádio (radio buttons). 
+//caixas de seleção (checkbox) 
+
+           //        <button type="submit">Marcar resposta</button>
+  //  </form>
         }
-        echo "<ul>";
+      /*
+      original:  echo "<li><input type=button value=".$answer." onClick=></li>";
+      <input type="radio" name="citizenship" />
+ */
+
+        echo "</ul>";
         ?>
         
     </div>
@@ -86,6 +100,9 @@ if(!$page||$page<0||$page>$totalPaginas-1){
             }   
 
         ?>
+    </div>
+    <div class="salvar">
+        <input type="button" value="Salvar Tentativa" onClick=" "> <!--não faz nada ainda-->
     </div>
     <div class="voltar">
         <input type="button" value="Terminar" onClick="$_SESSION['terminar']=1"> 

@@ -174,5 +174,28 @@ a.active {
 }
 
 .voltar input:hover {
-    background: rgb(116, 189, 116);
+    background: rgb(189, 116, 116);
 }
+
+.salvar input:hover {
+    background: rgb(247, 116, 55);
+}
+
+.salvar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.salvar input {
+    background: red;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    color: #FFF;
+    margin-top: 4px;
+    margin-bottom: 4px;
+
+    transition: background 0.3s;
+}
+
