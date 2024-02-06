@@ -10,6 +10,7 @@ require_once __DIR__.'/classes/RequestAPI.php';
 require_once __DIR__.'/classes/Database.php';
 require_once __DIR__.'/classes/cadastrar.php';
 
+// verifica nome vazio
 if(isset($_POST['name'])) {
     if(trim($_POST['name'])=='') {
         $_SESSION['message'] = "O campo não pode ser vazio.";
