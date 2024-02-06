@@ -1,0 +1,201 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #f3f3f5;
+    color: #000000;
+    font-family: 'Oswald', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+.container {
+    background: #fff;
+    max-width: 500px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.form {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.form form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form label{
+    font-weight: bold;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.form input {
+    height: 32px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-left: 12px;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+
+.form input:focus {
+    background: #f0f0f5;
+}
+
+.form button {
+    background: green;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    color: #FFF;
+    margin-top: 4px;
+    margin-bottom: 4px;
+
+    transition: background 0.3s;
+}
+
+.form button:hover {
+    background: rgb(116, 189, 116);
+}
+
+.separator {
+    background: #999;
+    height: 2px;
+    border-radius: 1px;
+}
+
+.list-pokemons {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 12px;
+}
+
+.pokemon-info {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 12px;
+}
+
+.list-pokemons ul{
+    font-weight: bold;
+    color: #000000;
+}
+
+.pokemon-info ul{
+    font-weight: bold;
+    color: #000000;
+}
+
+.footer {
+    background: #f0f0f5;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.footer p {
+    text-align: center;
+    color: #4d4d4d;
+    font-size: 12px;
+}
+    
+.pagination_section {
+    text-align: center;
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+
+.pagination_section a{
+    color: black;
+    border: 1px solid #999;
+    border-radius: 4px;
+    padding: 4px 9px;
+    text-decoration: none;
+}
+    
+.pagination_section a:hover:not(.active) {
+    background-color: #031F3B;
+    color: white;
+}
+    
+a.active {
+    background-color: green;
+    color: white;
+}
+
+.voltar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.voltar input {
+    background: green;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    color: #FFF;
+    margin-top: 4px;
+    margin-bottom: 4px;
+
+    transition: background 0.3s;
+}
+
+.voltar input:hover {
+    background: rgb(189, 116, 116);
+}
+
+.salvar input:hover {
+    background: rgb(247, 116, 55);
+}
+
+.salvar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.salvar input {
+    background: red;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    color: #FFF;
+    margin-top: 4px;
+    margin-bottom: 4px;
+
+    transition: background 0.3s;
+}
+
