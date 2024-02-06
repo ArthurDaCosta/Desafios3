@@ -31,7 +31,7 @@ session_start();
         ?>
     </div>
     <div class="voltar">
-        <input type="button" value="Voltar" onClick="history.go(-1)"> 
+        <input type="button" value="Voltar" onClick=" "> 
     </div>
     <div class="footer">
         <p>Desenvolvido por</p>

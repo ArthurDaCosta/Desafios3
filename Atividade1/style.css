@@ -177,18 +177,14 @@ a.active {
     background: rgb(189, 116, 116);
 }
 
-.salvar input:hover {
-    background: rgb(247, 116, 55);
-}
-
-.salvar {
+.home {
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
-.salvar input {
-    background: red;
+.home input[type="submit"] {
+    background: green;
     height: 32px;
     border: none;
     border-radius: 4px;
@@ -199,3 +195,29 @@ a.active {
     transition: background 0.3s;
 }
 
+.home input:hover {
+    background: rgb(189, 116, 116);
+}
+
+
+.salvar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.salvar input {
+    background: #024059;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    margin-top: 4px;
+    margin-bottom: 4px;
+
+    transition: background 0.3s;
+}
+
+.salvar input:hover {
+    background: rgb(93, 115, 156);
+}

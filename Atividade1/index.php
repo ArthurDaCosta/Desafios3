@@ -49,7 +49,7 @@ $router->verifyMethod();
                 unset($_SESSION['message']);
             }
         ?>
-        <form action="leaderboard.php" method="GET" enctype="multiplart/form-data">
+       <form action="leaderboard.php" method="GET" enctype="multiplart/form-data">
             <button type="submit">Leaderboard</button>
         </form>
     </div>
@@ -59,10 +59,4 @@ $router->verifyMethod();
         <p>Desenvolvido por</p>
     </div>
 </div>
-
-
-
-
-
-
 

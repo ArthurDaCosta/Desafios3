@@ -8,12 +8,14 @@ require_once __DIR__.'/classes/API.php';
 require_once __DIR__.'/classes/Router.php';
 require_once __DIR__.'/classes/RequestAPI.php';
 require_once __DIR__.'/classes/Database.php';
+require_once __DIR__.'/classes/cadastrar.php';
 
 $router = new Router();
 $router->setMethod($_SERVER['REQUEST_METHOD']);
 $router->setRoute($_SERVER['REQUEST_URI']); 
 
 $router->verifyMethod();
+
 
 $totalPaginas = count($_SESSION['questions']);
 
@@ -56,23 +58,26 @@ if(!$page||$page<0||$page>$totalPaginas-1){
     <div class="list-options">
         <?php
         echo "<ul>";
+       echo "<form method=POST action=cadastrar.php></form>";
         echo  $_SESSION['questions'][$page]['question'] . "</li>";
         $shuffle = shuffle($_SESSION['questions'][$page]['answers']);
         foreach ($_SESSION['questions'][$page]['answers'] as $answer) {
-        /*   <form action="leaderboard.php" method="GET" enctype="multiplart/form-data">
-            <button type="submit">Leaderboard</button>
-        </form> --> */
-           echo "<ul><input type=radio name=citizenship>".$answer."</ul>";
-//botões de rádio (radio buttons). 
-//caixas de seleção (checkbox) 
 
-           //        <button type="submit">Marcar resposta</button>
-  //  </form>
-        }
+//botões de rádio (radio buttons). 
+//caixas de seleção (checkbox)    
+     echo "<ul><input type=radio name=opcao value=$answer>".$answer."</ul>";
+ }  
+
       /*
       original:  echo "<li><input type=button value=".$answer." onClick=></li>";
       <input type="radio" name="citizenship" />
  */
+echo "<div class=salvar>";
+//echo "<input type=button value=Salvar Tentativa onClick= >";
+
+echo "<input type=submit value=Salvar_Tentativa>";
+echo "</div>";
+
 
         echo "</ul>";
         ?>
@@ -81,11 +86,12 @@ if(!$page||$page<0||$page>$totalPaginas-1){
     <div class="pagination_section">
         <?php
             if($page>0){
+                var_dump($opcao);
                 echo "<nobr><a href='?page=" . $page . "'> << Anterior </a>";
-            } else {
+            } else {var_dump($opcao);
                 echo "<nobr><a style='visibility: hidden'> << Anterior </a>";
             }
-            foreach ($_SESSION['questions'] as $key => $value) {
+         /*   foreach ($_SESSION['questions'] as $key => $value) {
                 if($key==$page){
                     $verifyActive= "active";
                 } else{
@@ -97,18 +103,26 @@ if(!$page||$page<0||$page>$totalPaginas-1){
                 echo "<a href='?page=" . ($page+2) . "'>Próxima >></a></nobr>";
             }  else {
                 echo "<a style='visibility: hidden';>Próxima >></a></nobr>";
-            }   
+            }   */
 
         ?>
     </div>
-    <div class="salvar">
-        <input type="button" value="Salvar Tentativa" onClick=" "> <!--não faz nada ainda-->
-    </div>
+    <!-- <div class="salvar">
+        <input type="button" value="Salvar Tentativa" onClick=" "> 
+    </div>-->
     <div class="voltar">
         <input type="button" value="Terminar" onClick="$_SESSION['terminar']=1"> 
     </div>
-    <div class="voltar">
-        <input type="button" value="Voltar" onClick="history.go(-1)"> 
+    <div class="home">
+         <form action="index.php" method="GET" enctype="multiplart/form-data"> 
+            <input  type="submit" value=Home >
+       <!--     <input type="button" value="Home" onClick="index.php" method="GET"> -->
+
+
+        </form>
+    </div>
+
+      <!--  <input type="button" value="Voltar" onClick="header:Location:index.php">  -->
     </div>
     <div class="footer">
         <p>Desenvolvido por</p>
