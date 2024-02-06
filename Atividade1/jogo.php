@@ -124,7 +124,7 @@ echo "</div>";
     <div class="home">
          <form action="index.php" method="GET" enctype="multiplart/form-data"> 
             <input  type="submit" value=Home >
-       <!--     <input type="button" value="Home" onClick="index.php" method="GET"> -->
+       <!--     <input type="button" value="Home" onClick="index.php" method="GET"> teste deletar-->
 
 
         </form>
