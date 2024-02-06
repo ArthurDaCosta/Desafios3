@@ -6,7 +6,7 @@ class Controller
     {
 
         $api = new API();
-        $api->setAmount('5');
+        $api->setAmount('5'); // ser uma questão por vez
         $api->setUrl("https://opentdb.com/api.php?amount=".$api->getAmount()."");
 
         $url = $api->url;
@@ -24,8 +24,6 @@ class Controller
             $question->setAnswers($result['incorrect_answers'], $result['correct_answer']);
             $questions[] = (array) $question;
         }
-
-
         
         $_SESSION['questions'] = $questions;
     }
