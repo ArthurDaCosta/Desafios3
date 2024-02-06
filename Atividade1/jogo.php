@@ -10,7 +10,6 @@ require_once __DIR__.'/classes/RequestAPI.php';
 require_once __DIR__.'/classes/Database.php';
 require_once __DIR__.'/classes/cadastrar.php';
 
-// verifica nome vazio
 if(isset($_POST['name'])) {
     if(trim($_POST['name'])=='') {
         $_SESSION['message'] = "O campo não pode ser vazio.";
@@ -28,12 +27,8 @@ $router->verifyMethod();
 
 $totalPaginas = count($_SESSION['questions']);
 
-if(isset($_GET['page'])){
-    $page = filter_input(INPUT_GET, "page", FILTER_VALIDATE_INT)-1;
-}
-
-if(!$page||$page<0||$page>$totalPaginas-1){
-    $page = 0;
+if(!$number){
+    $number = 0;
 }
 
 ?>
@@ -67,54 +62,27 @@ if(!$page||$page<0||$page>$totalPaginas-1){
     <div class="list-options">
         <?php
         echo "<ul>";
-       echo "<form method=POST action=cadastrar.php></form>";
-        echo  $_SESSION['questions'][$page]['question'] . "</li>";
-        $shuffle = shuffle($_SESSION['questions'][$page]['answers']);
-        foreach ($_SESSION['questions'][$page]['answers'] as $answer) {
+         echo "<form method=POST action=cadastrar.php></form>";
+        echo  $_SESSION['questions'][$number]['question'] . "</li>";
+        foreach ($_SESSION['questions'][$number]['answers'] as $answer) {
 
-//botões de rádio (radio buttons). 
-//caixas de seleção (checkbox)    
-     echo "<ul><input type=radio name=opcao value=$answer>".$answer."</ul>";
- }  
+            //botões de rádio (radio buttons). 
+            //caixas de seleção (checkbox)    
+             echo "<ul><input type=radio name=opcao value=$answer>".$answer."</ul>";
+        }  
 
-      /*
-      original:  echo "<li><input type=button value=".$answer." onClick=></li>";
-      <input type="radio" name="citizenship" />
- */
-echo "<div class=salvar>";
-//echo "<input type=button value=Salvar Tentativa onClick= >";
+         /*
+        original:  echo "<li><input type=button value=".$answer." onClick=></li>";
+        <input type="radio" name="citizenship" />
+        */
+        echo "<div class=salvar>";
+        //echo "<input type=button value=Salvar Tentativa onClick= >";
 
-echo "<input type=submit value=Salvar_Tentativa>";
-echo "</div>";
-
-
+        echo "<input type=submit value=Salvar_Tentativa>";
+        echo "</div>";
         echo "</ul>";
         ?>
         
-    </div>
-    <div class="pagination_section">
-        <?php
-            if($page>0){
-                var_dump($opcao);
-                echo "<nobr><a href='?page=" . $page . "'> << Anterior </a>";
-            } else {var_dump($opcao);
-                echo "<nobr><a style='visibility: hidden'> << Anterior </a>";
-            }
-         /*   foreach ($_SESSION['questions'] as $key => $value) {
-                if($key==$page){
-                    $verifyActive= "active";
-                } else{
-                    $verifyActive= "noactive";
-                }
-                echo "<a href='?page=" . ($key+1) . "' class='$verifyActive'>" . ($key+1) . "</a>";
-            }
-            if($page<$totalPaginas-1){
-                echo "<a href='?page=" . ($page+2) . "'>Próxima >></a></nobr>";
-            }  else {
-                echo "<a style='visibility: hidden';>Próxima >></a></nobr>";
-            }   */
-
-        ?>
     </div>
     <!-- <div class="salvar">
         <input type="button" value="Salvar Tentativa" onClick=" "> 
