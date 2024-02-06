@@ -19,19 +19,31 @@ session_start();
 
 <div class="container">
     <div class="header">
-        <h1>Leaderboard</h1>
+        <h1>Partidas</h1>
     </div>
+    <div class="separator">
+    </div>
+    <nobr>
+    <div class="nobr">
+        <?php
+            echo "<ut> Nomes:</ut>";
+            echo "<ui> Questões:</ui>";
+            echo "<ui> Certas:</ui>";
+            echo "<ui> Erradas:</ui>";
+        ?>
+    </div>
+    </nobr>
     <div class="separator">
     </div>
     <div class="list-names">
         <?php
-            echo "<ul>";
             echo "<ui> Names:</ui>";
-            echo "<ul>";
         ?>
     </div>
-    <div class="voltar">
-        <input type="button" value="Voltar" onClick=" "> 
+    <div class="home">
+         <form action="index.php" method="POST" enctype="multiplart/form-data"> 
+            <input  type="submit" value=Home >
+        </form>
     </div>
     <div class="footer">
         <p>Desenvolvido por</p>

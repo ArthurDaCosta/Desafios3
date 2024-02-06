@@ -221,3 +221,22 @@ a.active {
 .salvar input:hover {
     background: rgb(93, 115, 156);
 }
+
+.nobr {
+    white-space: nowrap;
+    text-align: center;
+}
+
+.nobr ut {
+    margin-right: 27%;
+}
+
+.nobr ui {
+    margin-right: 15%;
+}
+
+.separator-vertical {
+    background: #999;
+    height: 2px;
+    border-radius: 1px;
+}
