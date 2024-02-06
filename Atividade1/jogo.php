@@ -10,6 +10,14 @@ require_once __DIR__.'/classes/RequestAPI.php';
 require_once __DIR__.'/classes/Database.php';
 require_once __DIR__.'/classes/cadastrar.php';
 
+if(isset($_POST['name'])) {
+    if(trim($_POST['name'])=='') {
+        $_SESSION['message'] = "O campo não pode ser vazio.";
+        header("location: index.php");
+        exit;
+    }  
+}
+
 $router = new Router();
 $router->setMethod($_SERVER['REQUEST_METHOD']);
 $router->setRoute($_SERVER['REQUEST_URI']); 
