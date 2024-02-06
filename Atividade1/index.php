@@ -39,8 +39,8 @@ $router->verifyMethod();
     <div class="form">
         <form action="jogo.php?page=1" method="POST" enctype="multiplart/form-data">
             <input type="hidden" name="insert" value="insert">
-            <label for="nome">Digite seu Nome:</label>
-            <input type="text" name="nome" placeholder="Nome">
+            <label for="name">Digite seu Nome:</label>
+            <input type="text" name="name" placeholder="Nome">
             <button type="submit">Novo Jogo</button>
         </form>
         <?php
