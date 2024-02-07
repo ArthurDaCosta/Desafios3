@@ -70,10 +70,11 @@ $_SESSION['incorrect'] = 2;
             ?>
         </div>
     </div>
-    <div class="home">
-         <form action="index.php" method="POST" enctype="multiplart/form-data"> 
-            <input  type="submit" value=Home >
-        </form>
+    <div>
+        <form action=index.php method=POST enctype=multiplart/form-data>
+        <div class="salvar">
+            <input type=submit value=Home action=leaderboard.php method=POST >
+        </div>
     </div>
     <div class="footer">
         <p>Desenvolvido por</p>

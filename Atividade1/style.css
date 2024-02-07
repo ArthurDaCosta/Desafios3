@@ -97,32 +97,37 @@ a:hover {
 }
 
 .list-games  {
+    display: flex;
     margin-top: 12px;
     margin-bottom: 12px;
 }
 
 .name {
+    text-align: center;
     width:36%;
     float: left;
-    border: 2px solid red;
+    border-right: 2px solid red;
 }
 
 .questions {
+    text-align: center;
     width: 20%;
     float: left;
-    border: 2px solid red;
+    border-right: 2px solid red;
 }
 
 .correct {
+    text-align: center;
     width:20%;
     float: left;
-    border: 2px solid red;
+    border-right: 2px solid red;
 }
 
 .incorrect {
+    text-align: center;
     width:20%;
     float: left;
-    border: 2px solid red;
+    border-right: 2px solid red;
 }
 
 .name ui {
