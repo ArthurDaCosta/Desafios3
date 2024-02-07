@@ -37,7 +37,7 @@ $_SESSION['incorrect'] = 2;
             echo "<ui> Erradas:</ui>";
         ?>
     </div>
-    <!--        
+    <!--   -->   
         <table>
         <tr>
             <th>Nomes</th>
@@ -52,7 +52,7 @@ $_SESSION['incorrect'] = 2;
             <td>Dados 'erradas'</td>
         </tr>
 
-    </table>-->
+    </table>
     <div class="separator-vertical">
     </div>
     <div class="separator">

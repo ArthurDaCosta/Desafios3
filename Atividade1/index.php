@@ -15,6 +15,13 @@ $router->setRoute($_SERVER['REQUEST_URI']);
 
 $router->verifyMethod();
 
+$banco = new Database;
+$banco->makeConnection();
+$banco->createTables();
+
+/*
+*/
+
 ?>
 
 <!DOCTYPE html>
