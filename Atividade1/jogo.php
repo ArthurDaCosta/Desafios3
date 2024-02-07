@@ -39,15 +39,6 @@ if(isset($_POST['opcao'])) {
         $_SESSION['message'] = "O campo não pode ser vazio.";
         exit;
     }  
-
-    } 
-    
-    if(strlen($_POST['name'])>32) {
-        $_SESSION['message'] = "O nome não pode ter mais de 32 caracteres.";
-        header("location: index.php");
-        exit;
-    } 
-
 }
 $banco = new Database;
 $banco->makeConnection();
@@ -58,7 +49,7 @@ if(!$number){
 }
 
 if(isset($_POST['opcao'])){
-    if(str_replace(' ', '',$_SESSION['questions'][$number]['correct_answer']) == $_POST['opcao']){
+    if($_SESSION['questions'][$number]['correct_answer'] == $_POST['opcao']){
 //$database->post("players", ['corretas'-> ]);
     $_SESSION['corretas'] += 1;
 } else{
@@ -134,8 +125,8 @@ $totalPaginas = count($_SESSION['questions']);
 
             //botões de rádio (radio buttons). 
             //caixas de seleção (checkbox)    
-             echo "<ul><input type=radio name=opcao value=".str_replace(' ', '', $answer).">$answer</ul>";
-echo "$answer";
+             echo "<ul><input type=radio name=opcao value='$answer'>$answer</ul>";
+            echo "$answer";
             }  
        echo "<div class=salvar>";
        echo "<input type=submit value='Próxima Pergunta'>"; //next
