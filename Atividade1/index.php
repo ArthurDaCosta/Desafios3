@@ -54,11 +54,18 @@ $banco->createTables();
                 echo "<p style='color: #ef5350';>" . $_SESSION['message'] . "</p>";
                 unset($_SESSION['message']);
             }
-        ?>
+            ?>
             <button type="submit">Novo Jogo</button>
         </form>
+        <?php
+        if (isset($_SESSION['questions'])) {
+            echo "<form action=jogo.php method=GET enctype=multiplart/form-data>
+            <button type=submit>Continuar Jogo</button>
+            </form>";
+        }
 
-       <form action="leaderboard.php" method="GET" enctype="multiplart/form-data">
+        ?>
+        <form action="leaderboard.php" method="GET" enctype="multiplart/form-data">
             <button type="submit">Partidas</button>
         </form>
     </div>

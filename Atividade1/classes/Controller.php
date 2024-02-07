@@ -6,7 +6,7 @@ class Controller
     {
 
         $api = new API();
-        $api->setAmount('5'); // ser uma questão por vez
+        $api->setAmount('1');
         $api->setUrl("https://opentdb.com/api.php?amount=".$api->getAmount()."");
 
         $url = $api->url;
@@ -22,6 +22,7 @@ class Controller
             $question->setCorrectAnswer($result['correct_answer']);
             $question->setIncorrectAnswers($result['incorrect_answers']);
             $question->setAnswers($result['incorrect_answers'], $result['correct_answer']);
+            shuffle($question->answers);
             $questions[] = (array) $question;
         }
         

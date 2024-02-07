@@ -29,13 +29,6 @@ $_SESSION['incorrect'] = 2;
     </div>
     <div class="separator">
     </div>
-  
-  <div class="container-lista">
-    <div class="header">
-        <h1>Partidas</h1>
-    </div>
-    <div class="separator">
-    </div>
     <div class="list-games">
         <div class="container-name">
             <h2>Nome</h2>
@@ -79,6 +72,8 @@ $_SESSION['incorrect'] = 2;
         <div class="salvar">
             <input type=submit value=Home action=leaderboard.php method=POST >
         </div>
+    </div>
+    <div class="separator">
     </div>
     <div class="footer">
         <p>Desenvolvido por</p>

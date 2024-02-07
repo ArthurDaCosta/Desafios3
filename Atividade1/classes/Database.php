@@ -36,9 +36,8 @@ class database
         return $result;
     }
     
-    function post(string $tableName, array $value){
+    function insert(string $tableName, array $value){
         pg_insert($this->connection, $tableName, $value);
-
     }
 
 
