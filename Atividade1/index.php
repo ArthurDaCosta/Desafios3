@@ -6,21 +6,13 @@ require_once __DIR__.'/classes/Router.php';
 require_once __DIR__.'/classes/Database.php';
 require_once __DIR__.'/classes/Model.php';
 
-/*
-$router = new Router();
-$router->setMethod($_SERVER['REQUEST_METHOD']);
-$router->setRoute($_SERVER['REQUEST_URI']); 
-*/
-var_dump($_POST['cancel']);
 
-$banco = new Database;
-$banco->makeConnection();
-$banco->createTables();
-
-//$router->verifyMethod();
+$database = new Database;
+$database->makeConnection();
+$database->createTables();
 
 Model::verifyJogo();
-var_dump($_POST['cancel']);
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +34,7 @@ var_dump($_POST['cancel']);
         <h1>Trivia</h1>
     </div>
     <div class="form">
-        <form action="jogo.php?page=1" method="POST" enctype="multiplart/form-data">
+        <form action="jogo.php" method="POST" enctype="multiplart/form-data">
             <input type="hidden" name="insert" value="insert">
             <label for="name">Digite seu Nome:</label>
             <input type="text" name="name" placeholder="Nome">

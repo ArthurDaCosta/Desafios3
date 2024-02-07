@@ -10,20 +10,12 @@ require_once __DIR__.'/classes/RequestAPI.php';
 require_once __DIR__.'/classes/Database.php';
 require_once __DIR__.'/classes/Model.php';
 
-
-var_dump($_SESSION['opcao']);
-var_dump($_SESSION['number']);
-
-Model::verifyName();
+Model::verifyName();   
 Model::verifyOpcao();
 
-
-var_dump($_SESSION['opcao']);
-var_dump($_SESSION['number']);
-
-$banco = new Database;
-$banco->makeConnection();
-$banco->createTables();
+$database = new Database;
+$database->makeConnection();
+$database->createTables();
 
 $router = new Router();
 $router->setMethod($_SERVER['REQUEST_METHOD']);
@@ -31,8 +23,8 @@ $router->setRoute($_SERVER['REQUEST_URI']);
 
 $router->verifyMethod();
 
-if (!isset($_SESSION['number'])){
-    $_SESSION['number'] = 1;
+if (!isset($_SESSION['questionNumber'])){
+    $_SESSION['questionNumber'] = 1;
 } 
 
 
@@ -42,7 +34,7 @@ if (!isset($_SESSION['number'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <META NAME="viewport" content="width=device-width, intial-scale=10">
+    <META NAME="viewport" content="width=device-width, initial-scale=10">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,23 +53,42 @@ if (!isset($_SESSION['number'])){
     </div>
     <div class="question">
         <?php
-            echo  "<ut>". $_SESSION['number'] . " - " . $_SESSION['question']['question'] . "</ut>";
+            echo  "<ut>". $_SESSION['questionNumber'] . " - " . $_SESSION['question']['question'] . "</ut>";
         ?>
     </div>
     <div class="separator">
     </div>
-    <form method=POST action=teste.php>
+    <form action="jogo.php" method="post">
         <div class="list-options">
             <?php
-            foreach ($_SESSION['question']['answers'] as $answer) {    
+            foreach ($_SESSION['question']['answers'] as $answer) {
                 echo "<ul><input type=radio name=opcao value='$answer'>$answer</ul>";
-            }  
+            }
             ?>
         </div>
         <div class=salvar>
-            <input type='submit' value='Próxima Pergunta'>
+            <input type="submit" id="botao" value="Próxima Pergunta" disabled>
         </div>
     </form>
+    <script>
+        var contador = 0;
+
+        function iniciarContador() {
+            contador = 0;
+            document.getElementById('botao').disabled = true; 
+            var intervalo = setInterval(function() {
+                contador++;
+                if (contador > 5) {
+                    clearInterval(intervalo);
+                    document.getElementById('botao').disabled = false;
+                }
+            }, 1000);
+        }
+
+        window.onload = function() {
+            iniciarContador(); 
+        };
+    </script>
     <form action=index.php method=POST enctype=multiplart/form-data>
         <div class="salvar">
         <input type=submit name=cancel value='Cancelar Jogo' method=POST >
@@ -85,7 +96,7 @@ if (!isset($_SESSION['number'])){
     </form>
     <form action=index.php method=POST enctype=multiplart/form-data>
         <div class="salvar">
-            <input type=submit value=Home action=leaderboard.php method=POST >
+            <input type=submit value=Home method=POST >
         </div>
     </form>
     <div class="separator">

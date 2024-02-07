@@ -13,7 +13,6 @@ class Model
                 $_SESSION['message'] = "O campo não pode ser vazio.";
                 header("location: index.php");
                 exit;
-
             }
 
             if(strlen($_POST['name'])>32) {
@@ -21,33 +20,30 @@ class Model
                 header("location: index.php");
                 exit;
             }
+
+            $_SESSION['name'] = $_POST['name'];
         }
     }
 
     static function verifyOpcao()
     {
-        if(isset($_SESSION['opcao'])) {
-            if($_SESSION['question']['correct_answer'] == $_SESSION['opcao']){
+        if(isset($_POST['opcao'])) {
+            if($_SESSION['question']['correct_answer'] == $_POST['opcao']){
                 $_SESSION['corretas'] += 1;
             } else{
                 $_SESSION['incorretas'] += 1;
             }
-   
+
             
             unset($_SESSION['question']);
-            $_SESSION['number']++;
-            unset($_SESSION['opcao']);
-          //  header("location:jogo.php");
+            $_SESSION['questionNumber'] += 1;
         }
     }
 
     static function verifyJogo()
     {
         if(isset($_POST['cancel'])) {
-            unset($_SESSION['question']);
-            var_dump($_SESSION['opcao']);
-            unset($_SESSION['opcao']);
-            var_dump($_SESSION['opcao']);
-        } 
+            session_unset();
+        }  
     }
 }
