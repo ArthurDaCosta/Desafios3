@@ -21,12 +21,12 @@ class Controller
             $question->setQuestion($result['question']);
             $question->setCorrectAnswer($result['correct_answer']);
             $question->setIncorrectAnswers($result['incorrect_answers']);
-            shuffle($question->answers);
             $question->setAnswers($result['incorrect_answers'], $result['correct_answer']);
-            $questions[] = (array) $question;
+            shuffle($question->answers);
+           // $questions[] = (array) $question;
         }
         
-        $_SESSION['questions'] = $questions;
+        $_SESSION['question'] = (array) $question;
     }
 }
 

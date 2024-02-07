@@ -6,18 +6,21 @@ require_once __DIR__.'/classes/Router.php';
 require_once __DIR__.'/classes/Database.php';
 require_once __DIR__.'/classes/Model.php';
 
+/*
 $router = new Router();
 $router->setMethod($_SERVER['REQUEST_METHOD']);
 $router->setRoute($_SERVER['REQUEST_URI']); 
+*/
+var_dump($_POST['cancel']);
 
 $banco = new Database;
 $banco->makeConnection();
 $banco->createTables();
 
-$router->verifyMethod();
+//$router->verifyMethod();
 
 Model::verifyJogo();
-
+var_dump($_POST['cancel']);
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +57,7 @@ Model::verifyJogo();
             <button type="submit">Novo Jogo</button>
         </form>
         <?php
-        if (isset($_SESSION['questions'])) {
+        if (isset($_SESSION['question'])) {
             echo "<form action=jogo.php method=GET enctype=multiplart/form-data>
             <button type=submit>Continuar Jogo</button>
             </form>";
