@@ -28,17 +28,15 @@ class Router
     function verifyMethod()
     {
         http_response_code(200);
-        if ($this->getMethod() === 'POST') {
-            if (isset($_SESSION['questions']))
-            {
-                
-            } else {
-                Controller::getQuestions();
-            }
-            
-        }    
+
+        if (!isset($_SESSION['question'])){
+            Controller::getQuestions(); 
+        } 
+       /* if ($this->getMethod() === 'POST') {
+            if (!isset($_SESSION['question'])){
+                Controller::getQuestions(); 
+            } 
+        } */  
     }
-    
-    
 }
 

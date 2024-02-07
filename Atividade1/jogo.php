@@ -11,23 +11,30 @@ require_once __DIR__.'/classes/Database.php';
 require_once __DIR__.'/classes/Model.php';
 
 
+var_dump($_SESSION['opcao']);
+var_dump($_SESSION['number']);
+
 Model::verifyName();
 Model::verifyOpcao();
 
 
+var_dump($_SESSION['opcao']);
+var_dump($_SESSION['number']);
+
 $banco = new Database;
 $banco->makeConnection();
 $banco->createTables();
-
-if(!$_SESSION['questionNumber']){
-    $_SESSION['questionNumber'] = 0;
-}
 
 $router = new Router();
 $router->setMethod($_SERVER['REQUEST_METHOD']);
 $router->setRoute($_SERVER['REQUEST_URI']); 
 
 $router->verifyMethod();
+
+if (!isset($_SESSION['number'])){
+    $_SESSION['number'] = 1;
+} 
+
 
 ?>
 
@@ -54,15 +61,15 @@ $router->verifyMethod();
     </div>
     <div class="question">
         <?php
-            echo  "<ut>".$_SESSION['questions'][$_SESSION['questionNumber']]['question'] . "</ut>";
+            echo  "<ut>". $_SESSION['number'] . " - " . $_SESSION['question']['question'] . "</ut>";
         ?>
     </div>
     <div class="separator">
     </div>
-    <form method=POST action=jogo.php>
+    <form method=POST action=teste.php>
         <div class="list-options">
             <?php
-            foreach ($_SESSION['questions'][$_SESSION['questionNumber']]['answers'] as $answer) {    
+            foreach ($_SESSION['question']['answers'] as $answer) {    
                 echo "<ul><input type=radio name=opcao value='$answer'>$answer</ul>";
             }  
             ?>
