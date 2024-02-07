@@ -71,13 +71,16 @@ $router->verifyMethod();
             <input type='submit' value='Próxima Pergunta'>
         </div>
     </form>
-    <div>
-        <form action=index.php method=POST enctype=multiplart/form-data>
-            <div class="salvar">
-                <input type=submit value=Home action=leaderboard.php method=POST >
-            </div>
-        </form>
-    </div>
+    <form action=index.php method=POST enctype=multiplart/form-data>
+        <div class="salvar">
+        <input type=submit name=cancel value='Cancelar Jogo' method=POST >
+        </div>
+    </form>
+    <form action=index.php method=POST enctype=multiplart/form-data>
+        <div class="salvar">
+            <input type=submit value=Home action=leaderboard.php method=POST >
+        </div>
+    </form>
     <div class="separator">
     </div>
     <div class="footer">

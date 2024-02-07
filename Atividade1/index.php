@@ -2,25 +2,21 @@
 
 session_start();
 
-require_once __DIR__.'/classes/Question.php';
-require_once __DIR__.'/classes/Controller.php';
-require_once __DIR__.'/classes/API.php';
 require_once __DIR__.'/classes/Router.php';
-require_once __DIR__.'/classes/RequestAPI.php';
 require_once __DIR__.'/classes/Database.php';
+require_once __DIR__.'/classes/Model.php';
 
 $router = new Router();
 $router->setMethod($_SERVER['REQUEST_METHOD']);
 $router->setRoute($_SERVER['REQUEST_URI']); 
 
-$router->verifyMethod();
-
 $banco = new Database;
 $banco->makeConnection();
 $banco->createTables();
 
-/*
-*/
+$router->verifyMethod();
+
+Model::verifyJogo();
 
 ?>
 
