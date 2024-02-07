@@ -129,31 +129,6 @@ a:hover {
     color: #4d4d4d;
     font-size: 12px;
 }
-    
-.pagination_section {
-    text-align: center;
-    position: relative;
-    margin-top: 16px;
-    margin-bottom: 12px;
-}
-
-.pagination_section a{
-    color: black;
-    border: 1px solid #999;
-    border-radius: 4px;
-    padding: 4px 9px;
-    text-decoration: none;
-}
-    
-.pagination_section a:hover:not(.active) {
-    background-color: #031F3B;
-    color: white;
-}
-    
-a.active {
-    background-color: rgb(93, 115, 156);
-    color: white;
-}
 
 .voltar {
     display: flex;
