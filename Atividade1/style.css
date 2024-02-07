@@ -5,7 +5,7 @@
 }
 
 body{
-    background: #eeeef0;
+    background: #f3f3f5;
     color: #000000;
     font-family: 'Oswald', sans-serif;
 }
@@ -30,6 +30,15 @@ a:hover {
 .container {
     background: #fff;
     max-width: 500px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+}
+
+.container-lista {
+    background: #fff;
+    width: 820px;
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
@@ -75,7 +84,7 @@ a:hover {
 }
 
 .form button {
-    background: #024059;
+    background: green;
     height: 32px;
     border: none;
     border-radius: 4px;
@@ -91,6 +100,7 @@ a:hover {
 }
 
 .separator {
+    display: fixed;
     background: #999;
     height: 2px;
     border-radius: 1px;
@@ -98,53 +108,48 @@ a:hover {
 
 .list-games  {
     display: flex;
-    margin-top: 10%;
-    margin-bottom:10%;
+    margin-bottom: 12px;
+}
+
+.container-name {
+    text-align: center;
+    min-width: 40%;
+    width: auto;
+    float: left;
+    border-left: 2px solid #999;
+    border-right: 2px solid #999;
 }
 
 .name {
-    text-align: center;
-    width:36%;
-    float: left;
-    border-right: 2px solid red;
+    border-bottom: 2px solid #999;
+    padding: 6px;
+    font-weight: bold;
 }
 
-.questions {
+.container-correct {
     text-align: center;
-    width: 20%;
+    min-width: 30%;
     float: left;
-    border-right: 2px solid red;
+    border-right: 2px solid #999;
 }
 
 .correct {
+    border-bottom: 2px solid #999;
+    padding: 6px;
+    font-weight: bold;
+}
+
+.container-incorrect {
     text-align: center;
-    width:20%;
+    min-width: 30%;
     float: left;
-    border-right: 2px solid red;
+    border-right: 2px solid #999;
 }
 
 .incorrect {
-    text-align: center;
-    width:20%;
-    float: left;
-    border-right: 2px solid red;
-}
-
-.name ui {
-    padding-right: 27%;
-}
-
-.questions ui {
-    margin-right: 15%;
-}
-
-.correct ui {
-    margin-right: 15%;
-}
-
-
-.incorrect ui {
-    margin-right: 15%;
+    border-bottom: 2px solid #999;
+    padding: 6px;
+    font-weight: bold;
 }
 
 
@@ -167,7 +172,7 @@ a:hover {
 }
 
 .voltar input {
-    background: #024059;
+    background: green;
     height: 32px;
     border: none;
     border-radius: 4px;
@@ -189,7 +194,7 @@ a:hover {
 }
 
 .home input[type="submit"] {
-    background: #024059;
+    background: green;
     height: 32px;
     border: none;
     border-radius: 4px;
@@ -240,10 +245,4 @@ a:hover {
     margin-right: 15%;
 }
 
-.separator-vertical {
-    position: relative;
-    margin-left: 165px;
-    background: #999;
-    width: 2px;
-    border-radius: 1px;
-}
+

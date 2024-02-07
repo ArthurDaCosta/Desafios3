@@ -20,15 +20,34 @@ if(isset($_POST['name'])) {
         $_SESSION['message'] = "O campo não pode ser vazio.";
         header("location: index.php");
         exit;
-    }  else{
-       unset($_SESSION['questions']); 
+
     }
+  
+    if(strlen($_POST['name'])>32) {
+        $_SESSION['message'] = "O nome não pode ter mais de 32 caracteres.";
+        header("location: index.php");
+        exit;
+    }
+  
+    if(isset($_POST['name'])) {
+        unset($_SESSION['name']);
+    } 
 }
+
 if(isset($_POST['opcao'])) {
     if(trim($_POST['opcao'])=='') {
         $_SESSION['message'] = "O campo não pode ser vazio.";
         exit;
     }  
+
+    } 
+    
+    if(strlen($_POST['name'])>32) {
+        $_SESSION['message'] = "O nome não pode ter mais de 32 caracteres.";
+        header("location: index.php");
+        exit;
+    } 
+
 }
 $banco = new Database;
 $banco->makeConnection();
