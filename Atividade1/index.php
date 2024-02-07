@@ -29,9 +29,8 @@ Model::verifyJogo();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon/trivia.png" type="image/x-icon"> 
     <title>Trivia</title>
-   <link rel="shortcut icon" href="favicon/trivia.png" type="image/x-icon"> 
-
 </head>
 <body>
 
@@ -40,7 +39,7 @@ Model::verifyJogo();
         <h1>Trivia</h1>
     </div>
     <div class="form">
-        <form action="jogo.php" method="POST" enctype="multiplart/form-data">
+        <form action="jogo.php?page=1" method="POST" enctype="multiplart/form-data">
             <input type="hidden" name="insert" value="insert">
             <label for="name">Digite seu Nome:</label>
             <input type="text" name="name" placeholder="Nome">
@@ -51,6 +50,7 @@ Model::verifyJogo();
                 unset($_SESSION['message']);
             }
             ?>
+
             <button type="submit">Novo Jogo</button>
         </form>
         <?php
@@ -59,16 +59,9 @@ Model::verifyJogo();
             <button type=submit>Continuar Jogo</button>
             </form>";
         }
-
         ?>
+
         <form action="leaderboard.php" method="GET" enctype="multiplart/form-data">
             <button type="submit">Partidas</button>
         </form>
     </div>
-    <div class="separator">
-    </div>
-    <div class="footer">
-        <p>Desenvolvido por</p>
-    </div>
-</div>
-

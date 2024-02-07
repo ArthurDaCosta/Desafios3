@@ -29,6 +29,7 @@ $_SESSION['incorrect'] = 2;
     </div>
     <div class="separator">
     </div>
+ 
     <div class="list-games">
         <div class="container-name">
             <h2>Nome</h2>
