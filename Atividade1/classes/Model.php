@@ -32,4 +32,12 @@ class Model
             }
         }
     }
+
+    static function verifyJogo()
+    {
+        if(isset($_POST['cancel'])) {
+            unset($_SESSION['questions']);
+            unset($_POST['cancel']);
+        }
+    }
 }
