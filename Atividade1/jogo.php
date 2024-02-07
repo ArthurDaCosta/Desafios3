@@ -15,7 +15,13 @@ if(isset($_POST['name'])) {
         $_SESSION['message'] = "O campo não pode ser vazio.";
         header("location: index.php");
         exit;
-    }  
+    } 
+    
+    if(strlen($_POST['name'])>32) {
+        $_SESSION['message'] = "O nome não pode ter mais de 32 caracteres.";
+        header("location: index.php");
+        exit;
+    } 
 }
 
 //verificar se alternativa foi selecionada

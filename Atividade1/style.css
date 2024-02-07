@@ -36,6 +36,15 @@ a:hover {
     padding: 12px;
 }
 
+.container-lista {
+    background: #fff;
+    width: 820px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+}
+
 .header {
     display: flex;
     justify-content: center;
@@ -91,6 +100,7 @@ a:hover {
 }
 
 .separator {
+    display: fixed;
     background: #999;
     height: 2px;
     border-radius: 1px;
@@ -98,53 +108,48 @@ a:hover {
 
 .list-games  {
     display: flex;
-    margin-top: 12px;
     margin-bottom: 12px;
 }
 
-.name {
+.container-name {
     text-align: center;
-    width:36%;
+    min-width: 40%;
+    width: auto;
     float: left;
-    border-right: 2px solid red;
+    border-left: 2px solid #999;
+    border-right: 2px solid #999;
 }
 
-.questions {
+.name {
+    border-bottom: 2px solid #999;
+    padding: 6px;
+    font-weight: bold;
+}
+
+.container-correct {
     text-align: center;
-    width: 20%;
+    min-width: 30%;
     float: left;
-    border-right: 2px solid red;
+    border-right: 2px solid #999;
 }
 
 .correct {
+    border-bottom: 2px solid #999;
+    padding: 6px;
+    font-weight: bold;
+}
+
+.container-incorrect {
     text-align: center;
-    width:20%;
+    min-width: 30%;
     float: left;
-    border-right: 2px solid red;
+    border-right: 2px solid #999;
 }
 
 .incorrect {
-    text-align: center;
-    width:20%;
-    float: left;
-    border-right: 2px solid red;
-}
-
-.name ui {
-    padding-right: 27%;
-}
-
-.questions ui {
-    margin-right: 15%;
-}
-
-.correct ui {
-    margin-right: 15%;
-}
-
-
-.incorrect ui {
-    margin-right: 15%;
+    border-bottom: 2px solid #999;
+    padding: 6px;
+    font-weight: bold;
 }
 
 
@@ -240,10 +245,3 @@ a:hover {
     margin-right: 15%;
 }
 
-.separator-vertical {
-    position: relative;
-    margin-left: 165px;
-    background: #999;
-    width: 2px;
-    border-radius: 1px;
-}

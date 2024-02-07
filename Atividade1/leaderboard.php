@@ -2,7 +2,7 @@
 
 session_start();
 
-$_SESSION['names'] = ['re', 'teste2'];
+$_SESSION['names'] = ['.', 'teste2'];
 $_SESSION['questions'] = 5;
 $_SESSION['correct'] = 3;
 $_SESSION['incorrect'] = 2;
@@ -22,50 +22,46 @@ $_SESSION['incorrect'] = 2;
 </head>
 <body>
 
-<div class="container">
+<div class="container-lista">
     <div class="header">
         <h1>Partidas</h1>
     </div>
     <div class="separator">
     </div>
-    <div class="nobr">
-        <?php
-            echo "<ut> Nomes:</ut>";
-            echo "<ui> Questões:</ui>";
-            echo "<ui> Certas:</ui>";
-            echo "<ui> Erradas:</ui>";
-        ?>
-    </div>
-    <div class="separator-vertical">
-    </div>
-    <div class="separator">
-    </div>
     <div class="list-games">
-        <div class="name">
+        <div class="container-name">
+            <h2>Nome</h2>
+             <div class="separator">
+            </div>
             <?php
                 foreach ($_SESSION['names'] as $name) {
-                    echo "<ui> $name</ut><br>";
+                    echo "<div class=name>";
+                    echo "<ui> $name</ui>";
+                    echo "</div>";
                 }
             ?>
         </div>
-        <div class="questions">
-            <?php
-                foreach ($_SESSION['names'] as $name) {;
-                    echo "<ui> $_SESSION[questions]</ui><br>";
-                }
-            ?>
-        </div>
-        <div class="correct">
+        <div class="container-correct">
+            <h2>Corretas</h2>
+            <div class="separator">
+            </div>
             <?php
                 foreach ($_SESSION['names'] as $name) {
+                    echo '<div class="correct">';
                     echo "<ui> $_SESSION[correct]</ui><br>";
+                    echo '</div>';
                 }
             ?>
         </div>
-        <div class="incorrect">
+        <div class="container-incorrect">
+            <h2>Incorretas</h2>
+            <div class="separator">
+            </div>
             <?php
                 foreach ($_SESSION['names'] as $name) {
+                    echo '<div class="incorrect">';
                     echo "<ui> $_SESSION[incorrect]</ui><br>";
+                    echo '</div>';
                 }
             ?>
         </div>
