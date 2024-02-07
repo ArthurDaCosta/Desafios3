@@ -15,6 +15,13 @@ $router->setRoute($_SERVER['REQUEST_URI']);
 
 $router->verifyMethod();
 
+$banco = new Database;
+$banco->makeConnection();
+$banco->createTables();
+
+/*
+*/
+
 ?>
 
 <!DOCTYPE html>
@@ -41,16 +48,18 @@ $router->verifyMethod();
             <input type="hidden" name="insert" value="insert">
             <label for="name">Digite seu Nome:</label>
             <input type="text" name="name" placeholder="Nome">
-            <button type="submit">Novo Jogo</button>
-        </form>
-        <?php
+
+            <?php
             if (isset( $_SESSION['message'])) {
                 echo "<p style='color: #ef5350';>" . $_SESSION['message'] . "</p>";
                 unset($_SESSION['message']);
             }
         ?>
+            <button type="submit">Novo Jogo</button>
+        </form>
+
        <form action="leaderboard.php" method="GET" enctype="multiplart/form-data">
-            <button type="submit">Leaderboard</button>
+            <button type="submit">Partidas</button>
         </form>
     </div>
     <div class="separator">

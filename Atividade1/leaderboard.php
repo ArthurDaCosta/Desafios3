@@ -18,11 +18,19 @@ $_SESSION['incorrect'] = 2;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon/trivia.png" type="image/x-icon"> 
     <title>Trivia</title>
 </head>
 <body>
 
 <div class="container-lista">
+    <div class="header">
+        <h1>Partidas</h1>
+    </div>
+    <div class="separator">
+    </div>
+  
+  <div class="container-lista">
     <div class="header">
         <h1>Partidas</h1>
     </div>

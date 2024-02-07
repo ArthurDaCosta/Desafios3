@@ -8,13 +8,38 @@ require_once __DIR__.'/classes/API.php';
 require_once __DIR__.'/classes/Router.php';
 require_once __DIR__.'/classes/RequestAPI.php';
 require_once __DIR__.'/classes/Database.php';
-require_once __DIR__.'/classes/cadastrar.php';
+require 'cadastrar.php';
+
+
+
+
+
 
 if(isset($_POST['name'])) {
     if(trim($_POST['name'])=='') {
         $_SESSION['message'] = "O campo não pode ser vazio.";
         header("location: index.php");
         exit;
+
+    }
+  
+    if(strlen($_POST['name'])>32) {
+        $_SESSION['message'] = "O nome não pode ter mais de 32 caracteres.";
+        header("location: index.php");
+        exit;
+    }
+  
+    if(isset($_POST['name'])) {
+        unset($_SESSION['name']);
+    } 
+}
+
+if(isset($_POST['opcao'])) {
+    if(trim($_POST['opcao'])=='') {
+        $_SESSION['message'] = "O campo não pode ser vazio.";
+        exit;
+    }  
+
     } 
     
     if(strlen($_POST['name'])>32) {
@@ -22,7 +47,27 @@ if(isset($_POST['name'])) {
         header("location: index.php");
         exit;
     } 
+
 }
+$banco = new Database;
+$banco->makeConnection();
+$banco->createTables();
+
+if(!$number){
+    $number = 0;
+}
+
+if(isset($_POST['opcao'])){
+    if(str_replace(' ', '',$_SESSION['questions'][$number]['correct_answer']) == $_POST['opcao']){
+//$database->post("players", ['corretas'-> ]);
+    $_SESSION['corretas'] += 1;
+} else{
+    $_SESSION['incorretas'] += 1;
+}
+//unset($_POST['opcao']);
+}
+
+
 
 //verificar se alternativa foi selecionada
 /* 
@@ -45,10 +90,12 @@ $router->verifyMethod();
 
 $totalPaginas = count($_SESSION['questions']);
 
-if(!$number){
-    $number = 0;
-}
 
+
+
+
+/*
+*/
 ?>
 
 <!DOCTYPE html>
@@ -81,15 +128,20 @@ if(!$number){
     <div class="list-options">
         <?php
         echo "<ul>";
-         echo "<form method=POST action=cadastrar.php>";
+         echo "<form method=POST action=jogo.php>";
         echo  $_SESSION['questions'][$number]['question'] . "</li>";
         foreach ($_SESSION['questions'][$number]['answers'] as $answer) {
 
             //botões de rádio (radio buttons). 
             //caixas de seleção (checkbox)    
-             echo "<ul><input type=radio name=opcao value=$answer>".$answer."</ul>";
-        }  
+             echo "<ul><input type=radio name=opcao value=".str_replace(' ', '', $answer).">$answer</ul>";
+echo "$answer";
+            }  
+       echo "<div class=salvar>";
+       echo "<input type=submit value='Próxima Pergunta'>"; //next
+   echo "</div>";
         echo "</form>";
+
          /*
         original:  echo "<li><input type=button value=".$answer." onClick=></li>";
         <input type="radio" name="citizenship" />
@@ -105,22 +157,27 @@ if(!$number){
     </div>
 
     <?php
-            if($number>0){
-                var_dump($opcao);
-                //echo "<nobr><a href='?page=" . $page . "'> << Anterior </a>";
-            } else {
-                var_dump($opcao);
+ 
+                //$banco->post();
+                var_dump($_SESSION['corretas']);
+      
+                var_dump($_SESSION['incorretas']);
+                if(isset($_POST['opcao']))
+                {
+                    var_dump($_POST['opcao']);
+                 
+                }
               //  echo "<nobr><a style='visibility: hidden'> << Anterior </a>";
-            }
+        
 
         ?>
-     <div class="salvar">
-        <input type="button" value="Salvar Tentativa" onClick=" "> 
-    </div>
-    <div class="voltar">
-        <input type="button" value="Terminar" onClick="$_SESSION['terminar']=1"> 
-    </div>
-
+    
+    
+        <!--   //if sodium_crypto_pwhash_scryptsalsa208sha256_str_verify$banco = new Database;
+$banco->makeConnection();
+$banco->createTables();
+$banco->post(); -->
+ 
     <div>
         <form action=index.php method=POST enctype=multiplart/form-data>
         <div class="salvar">

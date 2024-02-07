@@ -8,24 +8,25 @@ class database
     {
         $database = pg_connect("host=postgres port=5432 dbname=postgres user=exemplo password=exemplo")
             or die("Could not connect.\n");
-        return $database;
+        $this->connection = $database;
     }
 
     function createTables()
     {
         
         pg_query($this->connection, "CREATE TABLE IF NOT EXISTS public.questions (
-            'type' NOT NULL,
-            difficulty NULL, 
-            cattegory NULL,
-            question int4 NULL,
-            correct_answer NULL,
-            incorrect_answers NULL
+            type  varchar(2500),
+            difficulty varchar(2500), 
+            category varchar(2500),
+            question varchar(2500),
+            correct_answer varchar(2500),
+            incorrect_answers varchar(2500)
         );");
         
         pg_query($this->connection, "CREATE TABLE IF NOT EXISTS public.players (
-            'name' NULL,
-            'score' NULL
+            name varchar(2500),
+            corretas int4,
+            incorretas int4
         );");
     }
 
@@ -35,14 +36,9 @@ class database
         return $result;
     }
     
-    function post(){
-        $opcao = $_POST('opcao');
+    function post(string $tableName, array $value){
+        pg_insert($this->connection, $tableName, $value);
 
-        $conn = pg_connect("host=postgres port=5432 dbname=postgres user=exemplo password=exemplo")
-        or die("Could not connect.\n");
-        
-        
-        var_dump($opcao);
     }
 
 
