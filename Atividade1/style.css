@@ -96,27 +96,52 @@ a:hover {
     border-radius: 1px;
 }
 
-.list-pokemons {
+.list-games  {
     margin-top: 12px;
     margin-bottom: 12px;
-    margin-left: 12px;
 }
 
-.pokemon-info {
-    margin-top: 12px;
-    margin-bottom: 12px;
-    margin-left: 12px;
+.name {
+    width:36%;
+    float: left;
+    border: 2px solid red;
 }
 
-.list-pokemons ul{
-    font-weight: bold;
-    color: #000000;
+.questions {
+    width: 20%;
+    float: left;
+    border: 2px solid red;
 }
 
-.pokemon-info ul{
-    font-weight: bold;
-    color: #000000;
+.correct {
+    width:20%;
+    float: left;
+    border: 2px solid red;
 }
+
+.incorrect {
+    width:20%;
+    float: left;
+    border: 2px solid red;
+}
+
+.name ui {
+    padding-right: 27%;
+}
+
+.questions ui {
+    margin-right: 15%;
+}
+
+.correct ui {
+    margin-right: 15%;
+}
+
+
+.incorrect ui {
+    margin-right: 15%;
+}
+
 
 .footer {
     background: #f0f0f5;
@@ -128,31 +153,6 @@ a:hover {
     text-align: center;
     color: #4d4d4d;
     font-size: 12px;
-}
-    
-.pagination_section {
-    text-align: center;
-    position: relative;
-    margin-top: 16px;
-    margin-bottom: 12px;
-}
-
-.pagination_section a{
-    color: black;
-    border: 1px solid #999;
-    border-radius: 4px;
-    padding: 4px 9px;
-    text-decoration: none;
-}
-    
-.pagination_section a:hover:not(.active) {
-    background-color: #031F3B;
-    color: white;
-}
-    
-a.active {
-    background-color: green;
-    color: white;
 }
 
 .voltar {
@@ -236,7 +236,9 @@ a.active {
 }
 
 .separator-vertical {
+    position: relative;
+    margin-left: 165px;
     background: #999;
-    height: 2px;
+    width: 2px;
     border-radius: 1px;
 }

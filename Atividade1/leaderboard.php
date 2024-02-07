@@ -2,6 +2,11 @@
 
 session_start();
 
+$_SESSION['names'] = ['re', 'teste2'];
+$_SESSION['questions'] = 5;
+$_SESSION['correct'] = 3;
+$_SESSION['incorrect'] = 2;
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +28,6 @@ session_start();
     </div>
     <div class="separator">
     </div>
-    <nobr>
     <div class="nobr">
         <?php
             echo "<ut> Nomes:</ut>";
@@ -32,13 +36,39 @@ session_start();
             echo "<ui> Erradas:</ui>";
         ?>
     </div>
-    </nobr>
+    <div class="separator-vertical">
+    </div>
     <div class="separator">
     </div>
-    <div class="list-names">
-        <?php
-            echo "<ui> Names:</ui>";
-        ?>
+    <div class="list-games">
+        <div class="name">
+            <?php
+                foreach ($_SESSION['names'] as $name) {
+                    echo "<ui> $name</ut><br>";
+                }
+            ?>
+        </div>
+        <div class="questions">
+            <?php
+                foreach ($_SESSION['names'] as $name) {;
+                    echo "<ui> $_SESSION[questions]</ui><br>";
+                }
+            ?>
+        </div>
+        <div class="correct">
+            <?php
+                foreach ($_SESSION['names'] as $name) {
+                    echo "<ui> $_SESSION[correct]</ui><br>";
+                }
+            ?>
+        </div>
+        <div class="incorrect">
+            <?php
+                foreach ($_SESSION['names'] as $name) {
+                    echo "<ui> $_SESSION[incorrect]</ui><br>";
+                }
+            ?>
+        </div>
     </div>
     <div class="home">
          <form action="index.php" method="POST" enctype="multiplart/form-data"> 
