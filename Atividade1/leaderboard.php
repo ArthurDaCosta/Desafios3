@@ -26,25 +26,50 @@ session_start();
     <nobr>
     <div class="nobr">
         <?php
-            echo "<ut> Nomes:</ut>";
-            echo "<ui> Questões:</ui>";
-            echo "<ui> Certas:</ui>";
-            echo "<ui> Erradas:</ui>";
+//passar as informações das colunas e linhas...
         ?>
+<?php
+echo "<ut> Nomes</ut>";
+echo "<ui> Questões</ui>";
+echo "<ui> Certas</ui>";
+echo "<ui> Erradas</ui>";
+?>
+ 
     </div>
     </nobr>
+       <table>
+        <tr>
+            <th>Nomes</th>
+            <th>Questões</th>
+            <th>Certas</th>
+            <th>Erradas</th>
+        </tr>
+        <tr>
+            <td>Dados 'nome'</td>
+            <td>Dados 'questoes'</td>
+            <td>Dados 'certas'</td>
+            <td>Dados 'erradas'</td>
+        </tr>
+
+    </table>
     <div class="separator">
     </div>
     <div class="list-names">
         <?php
             echo "<ui> Names:</ui>";
         ?>
+    
     </div>
-    <div class="home">
-         <form action="index.php" method="POST" enctype="multiplart/form-data"> 
-            <input  type="submit" value=Home >
-        </form>
+    
+
+    <div>
+        <form action=index.php method=POST enctype=multiplart/form-data>
+        <div class="salvar">
+            <input type=submit value=Home action=leaderboard.php method=POST >
+        </div>
     </div>
+    <!---->
+   
     <div class="footer">
         <p>Desenvolvido por</p>
     </div>
