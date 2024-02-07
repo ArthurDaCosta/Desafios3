@@ -23,7 +23,6 @@ class Controller
             $question->setIncorrectAnswers($result['incorrect_answers']);
             $question->setAnswers($result['incorrect_answers'], $result['correct_answer']);
             shuffle($question->answers);
-           // $questions[] = (array) $question;
         }
         
         $_SESSION['question'] = (array) $question;
