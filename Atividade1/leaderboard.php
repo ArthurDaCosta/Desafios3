@@ -18,6 +18,7 @@ $_SESSION['incorrect'] = 2;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon/trivia.png" type="image/x-icon"> 
     <title>Trivia</title>
 </head>
 <body>
@@ -36,6 +37,22 @@ $_SESSION['incorrect'] = 2;
             echo "<ui> Erradas:</ui>";
         ?>
     </div>
+    <!--        
+        <table>
+        <tr>
+            <th>Nomes</th>
+            <th>Questões</th>
+            <th>Certas</th>
+            <th>Erradas</th>
+        </tr>
+        <tr>
+            <td>Dados 'nome'</td>
+            <td>Dados 'questoes'</td>
+            <td>Dados 'certas'</td>
+            <td>Dados 'erradas'</td>
+        </tr>
+
+    </table>-->
     <div class="separator-vertical">
     </div>
     <div class="separator">
