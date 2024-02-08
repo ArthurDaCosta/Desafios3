@@ -4,8 +4,6 @@ session_start();
 
 class Model
 {
-
-
     static function verifyName()
     {
         if(isset($_POST['name'])) {
@@ -28,6 +26,7 @@ class Model
     static function verifyOpcao()
     {
         if(isset($_POST['opcao'])) {
+
             if($_SESSION['question']['correct_answer'] == $_POST['opcao']){
                 $_SESSION['corretas'] += 1;
             } else{
@@ -40,9 +39,22 @@ class Model
         }
     }
 
-    static function verifyJogo()
+    static function verifyGameCancelled()
     {
         if(isset($_POST['cancel'])) {
+            session_unset();
+        }  
+    }
+
+    static function verifyGameFinished(Database $database)
+    {
+        if($_SESSION['questionNumber']>5) {
+
+            $player = new Player($_SESSION['name'], $_SESSION['corretas'] ?? 0, $_SESSION['incorretas'] ?? 0);
+
+            var_dump($player);
+            $database->insert($player);
+            var_dump($player);
             session_unset();
         }  
     }

@@ -2,10 +2,21 @@
 
 session_start();
 
-$_SESSION['names'] = ['.', 'teste2'];
-$_SESSION['questions'] = 5;
-$_SESSION['correct'] = 3;
-$_SESSION['incorrect'] = 2;
+require_once 'classes/Database.php';
+require_once 'classes/Model.php';
+require_once 'classes/Player.php';
+
+$database = new Database;
+$database->makeConnection();
+$database->createTables();
+
+Model::verifyOpcao();
+Model::verifyGameFinished($database);
+
+$matches = $database->getAll('player') ;
+if (empty($matches)) {
+    $matches = [];
+}
 
 ?>
 
@@ -36,9 +47,9 @@ $_SESSION['incorrect'] = 2;
              <div class="separator">
             </div>
             <?php
-                foreach ($_SESSION['names'] as $name) {
+                foreach ($matches as $match) {
                     echo "<div class=name>";
-                    echo "<ui> $name</ui>";
+                    echo "<ui>".$match['name']."</ui>";
                     echo "</div>";
                 }
             ?>
@@ -48,9 +59,9 @@ $_SESSION['incorrect'] = 2;
             <div class="separator">
             </div>
             <?php
-                foreach ($_SESSION['names'] as $name) {
+                foreach ($matches as $match) {
                     echo '<div class="correct">';
-                    echo "<ui> $_SESSION[correct]</ui><br>";
+                    echo "<ui>".$match['correct']."</ui><br>";
                     echo '</div>';
                 }
             ?>
@@ -60,9 +71,9 @@ $_SESSION['incorrect'] = 2;
             <div class="separator">
             </div>
             <?php
-                foreach ($_SESSION['names'] as $name) {
+                foreach ($matches as $match) {
                     echo '<div class="incorrect">';
-                    echo "<ui> $_SESSION[incorrect]</ui><br>";
+                    echo "<ui>".$match['incorrect']."</ui><br>";
                     echo '</div>';
                 }
             ?>

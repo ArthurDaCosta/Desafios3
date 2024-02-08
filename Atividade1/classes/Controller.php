@@ -2,7 +2,7 @@
 
 class Controller
 {
-    static function getQuestions()
+    static function getQuestions(Database $database)
     {
 
         $api = new API();
@@ -12,7 +12,6 @@ class Controller
         $url = $api->url;
         $response = RequestAPI::request($url);
 
-        $questions = [];
         foreach ($response['results'] as $result) {
             $question = new Question();
             $question->setCategory($result['category']);
@@ -25,7 +24,10 @@ class Controller
             shuffle($question->answers);
         }
         
-        $_SESSION['question'] = (array) $question;
+        $_SESSION['question'] = get_object_vars($question);
+        $question->incorrect_answers=json_encode($question->incorrect_answers);
+        $question->answers=json_encode($question->answers);
+        $database->insert($question);
     }
 }
 

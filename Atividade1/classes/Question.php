@@ -7,8 +7,8 @@ class Question
     public string $category;
     public string $question;
     public string $correct_answer;
-    public array $incorrect_answers;
-    public array $answers;
+    public $incorrect_answers;
+    public $answers;
 
     function setCategory($category)
     {

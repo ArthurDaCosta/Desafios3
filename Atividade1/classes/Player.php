@@ -1,26 +1,14 @@
 <?php
 
 class Player {
-    private string $name;
-    private string $score;
+    public string $name;
+    public int $correct;
+    public int $incorrect;
 
-    function setName($name)
+    function __construct(string $name, int $correct, int $incorrect)
     {
         $this->name = $name;
+        $this->correct = $correct;
+        $this->incorrect = $incorrect;
     }
-
-    function getName()
-    {
-        return $this->name;
-    }
-
-    function setScore($score)
-    {
-        $this->score = $score;
-    }
-
-    function getScore()
-    {
-        return $this->score;
-    }   
 }

@@ -9,6 +9,7 @@ require_once __DIR__.'/classes/Router.php';
 require_once __DIR__.'/classes/RequestAPI.php';
 require_once __DIR__.'/classes/Database.php';
 require_once __DIR__.'/classes/Model.php';
+require_once __DIR__.'/classes/Player.php';
 
 Model::verifyName();   
 Model::verifyOpcao();
@@ -21,7 +22,7 @@ $router = new Router();
 $router->setMethod($_SERVER['REQUEST_METHOD']);
 $router->setRoute($_SERVER['REQUEST_URI']); 
 
-$router->verifyMethod();
+$router->verifyMethod($database);
 
 if (!isset($_SESSION['questionNumber'])){
     $_SESSION['questionNumber'] = 1;
@@ -58,7 +59,18 @@ if (!isset($_SESSION['questionNumber'])){
     </div>
     <div class="separator">
     </div>
-    <form action="jogo.php" method="post">
+    <?php
+        if($_SESSION['questionNumber'] < 5) 
+        {
+            $action = "jogo.php";
+            $text = "Próxima Pergunta";
+        } else {
+            $action = "leaderboard.php";
+            $text = "Terminar Jogo";
+        }
+    
+    echo "<form action='$action' method=post>";
+    ?>
         <div class="list-options">
             <?php
             foreach ($_SESSION['question']['answers'] as $answer) {
@@ -67,7 +79,9 @@ if (!isset($_SESSION['questionNumber'])){
             ?>
         </div>
         <div class=salvar>
-            <input type="submit" id="botao" value="Próxima Pergunta" disabled>
+            <?php
+            echo "<input type=submit id=botao value='$text' disabled>";
+            ?>
         </div>
     </form>
     <script>

@@ -5,13 +5,13 @@ session_start();
 require_once __DIR__.'/classes/Router.php';
 require_once __DIR__.'/classes/Database.php';
 require_once __DIR__.'/classes/Model.php';
-
+require_once __DIR__.'/classes/Player.php';
 
 $database = new Database;
 $database->makeConnection();
 $database->createTables();
 
-Model::verifyJogo();
+Model::verifyGameCancelled();
 
 ?>
 
@@ -60,3 +60,4 @@ Model::verifyJogo();
             <button type="submit">Partidas</button>
         </form>
     </div>
+</div>

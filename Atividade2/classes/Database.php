@@ -25,7 +25,7 @@ class database
         pg_query($this->connection, "CREATE TABLE IF NOT EXISTS public.Tarefas (
             id serial NOT NULL,
             descricao TEXT NOT NULL,
-            project_id INT,
+            project_id INT REFERENCES Projetos(id),
             data_inicio DATE,
             data_fim DATE
         );");
@@ -38,8 +38,8 @@ class database
 
         pg_query($this->connection, "CREATE TABLE IF NOT EXISTS public.Atribuicoes (
             id serial NOT NULL,
-            usuario_id INT,
-            tarefa_id INT,
+            usuario_id INT REFERENCES Usuarios(id),
+            tarefa_id INT REFERENCES Tarefas(id),
             data_atribuicao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );");
     }

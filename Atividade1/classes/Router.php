@@ -25,13 +25,13 @@ class Router
         $this->route = $route;
     }
 
-    function verifyMethod()
+    function verifyMethod(Database $database)
     {
         http_response_code(200);
 
         if ($this->getMethod() === 'POST') {
             if (!isset($_SESSION['question'])){
-                Controller::getQuestions(); 
+                Controller::getQuestions($database); 
             } 
         } 
     }
