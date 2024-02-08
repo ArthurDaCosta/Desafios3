@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: dockerfile
     ports:
-      - "3601:80"
+      - "3606:80"
       - "443:443"
     volumes:
       - .:/var/www/html
@@ -12,14 +12,14 @@ services:
       - postgres
   postgres:
     image: postgres:latest
-    container_name: postgres
+    container_name: postgres2
     restart: always
     environment:
-      POSTGRES_NAME: postgres
+      POSTGRES_NAME: postgres2
       POSTGRES_USER: exemplo
       POSTGRES_PASSWORD: exemplo
     ports:
-      - "3600:5432"
+      - "3605:5432"
     
 #docker compose up -d  docker compose stop e docker compose down
 
