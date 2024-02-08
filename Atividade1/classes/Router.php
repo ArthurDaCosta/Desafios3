@@ -33,7 +33,7 @@ class Router
             if (!isset($_SESSION['question'])){
                 Controller::getQuestions($database); 
             } 
-        } 
+        }
     }
 }
 

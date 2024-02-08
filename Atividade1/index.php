@@ -49,4 +49,9 @@ session_start();
             <button type="submit">Partidas</button>
         </form>
     </div>
+    <div class="separator">
+    </div>
+    <div class="footer">
+        <p>Desenvolvido por Arthur e Ana</p>
+    </div>
 </div>

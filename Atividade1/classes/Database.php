@@ -33,7 +33,7 @@ class database
 
     function select($tableName)
     {
-        $result = pg_query($this->connection, "SELECT * FROM $tableName"); //consulta
+        $result = pg_query($this->connection, "SELECT * FROM $tableName");
         return $result;
     }
 

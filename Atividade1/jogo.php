@@ -2,10 +2,6 @@
 
 session_start();
 
-var_dump($_SESSION['name']);
-var_dump($_SESSION['corretas']);
-var_dump($_SESSION['incorretas']);
-
 ?>
 
 <!DOCTYPE html>
@@ -93,6 +89,6 @@ var_dump($_SESSION['incorretas']);
     <div class="separator">
     </div>
     <div class="footer">
-        <p>Desenvolvido por</p>
+        <p>Desenvolvido por Arthur e Ana</p>
     </div>
 </div>

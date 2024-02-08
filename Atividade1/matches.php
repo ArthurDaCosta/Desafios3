@@ -7,11 +7,6 @@ require_once 'classes/Database.php';
 $database = new Database();
 $database->makeConnection();
 
-var_dump($_SESSION['name']);
-var_dump($_SESSION['corretas']);
-var_dump($_SESSION['incorretas']);
-var_dump($_SESSION['questionNumber']);
-
 $matches = $database->getAll('player') ;
 if (empty($matches)) {
     $matches = [];
@@ -87,6 +82,6 @@ if (empty($matches)) {
     <div class="separator">
     </div>
     <div class="footer">
-        <p>Desenvolvido por</p>
+        <p>Desenvolvido por Arthur e Ana</p>
     </div>
 </div>
