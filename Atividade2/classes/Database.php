@@ -6,7 +6,7 @@ class database
 
     function makeConnection()
     {
-        $database = pg_connect("host=localhost port=3600 dbname=postgres user=exemplo password=exemplo")
+        $database = pg_connect("host=localhost port=3605 dbname=postgres user=exemplo password=exemplo")
             or die("Could not connect.\n");
         $this->connection = $database;
     }
@@ -25,7 +25,7 @@ class database
         pg_query($this->connection, "CREATE TABLE IF NOT EXISTS public.Tarefas (
             id serial NOT NULL,
             descricao TEXT NOT NULL,
-            project_id INT REFERENCES Projetos(id),
+            project_id INT ,
             data_inicio DATE,
             data_fim DATE
         );");
@@ -38,8 +38,8 @@ class database
 
         pg_query($this->connection, "CREATE TABLE IF NOT EXISTS public.Atribuicoes (
             id serial NOT NULL,
-            usuario_id INT REFERENCES Usuarios(id),
-            tarefa_id INT REFERENCES Tarefas(id),
+            usuario_id INT ,
+            tarefa_id INT ,
             data_atribuicao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );");
     }
