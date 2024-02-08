@@ -10,11 +10,6 @@ class RequestAPI
 
         if (curl_errno($ch)) {
             http_response_code(400);
-            if (curl_errno($ch) === 5) {
-                RequestAPI::request($url);
-            }
-            echo json_encode(['message' => 'Curl error: ' . curl_error($ch)]);
-            exit;
         }
 
         curl_close($ch);
@@ -23,8 +18,6 @@ class RequestAPI
 
         if (!$decoded) {
             http_response_code(404);
-            echo json_encode(['message' => 'Data not found']);
-            exit;
         }
 
         return $decoded;

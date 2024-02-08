@@ -43,6 +43,13 @@ class database
         $result = pg_fetch_all($result);
         return $result;
     }
+
+    function getOne(string $tableName, string $where)
+    {
+        $result = pg_query($this->connection, "SELECT * FROM ".strtolower($tableName)." WHERE $where");
+        $result = pg_fetch_all($result);
+        return $result;
+    }
     
     function insert(object $object)
     {

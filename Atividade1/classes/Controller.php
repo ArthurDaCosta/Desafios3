@@ -11,6 +11,11 @@ class Controller
 
         $url = $api->url;
         $response = RequestAPI::request($url);
+        if($response === null){
+            $response['database'] = $database->getAll('question');
+            shuffle($response['database']);
+            $response['results'][]=$response['database'][rand(0, count($response['database'])-1)];
+        }
 
         foreach ($response['results'] as $result) {
             $question = new Question();
@@ -20,14 +25,22 @@ class Controller
             $question->setQuestion($result['question']);
             $question->setCorrectAnswer($result['correct_answer']);
             $question->setIncorrectAnswers($result['incorrect_answers']);
-            $question->setAnswers($result['incorrect_answers'], $result['correct_answer']);
+            if(isset($result['answers'])){
+                $question->answers=json_decode($result['answers']);
+            } else {
+                $question->setAnswers($result['incorrect_answers'], $result['correct_answer']);
+            }
             shuffle($question->answers);
         }
         
         $_SESSION['question'] = get_object_vars($question);
-        $question->incorrect_answers=json_encode($question->incorrect_answers);
-        $question->answers=json_encode($question->answers);
-        $database->insert($question);
+        $questionFromDB = $database->getOne('question', "question = '$question->question'");
+        if($question->question!=$questionFromDB[0]['question'])
+        {
+            $question->incorrect_answers=json_encode($question->incorrect_answers);
+            $question->answers=json_encode($question->answers);
+            $database->insert($question);
+        }
     }
 }
 

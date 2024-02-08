@@ -2,32 +2,9 @@
 
 session_start();
 
-require_once __DIR__.'/classes/Question.php';
-require_once __DIR__.'/classes/Controller.php';
-require_once __DIR__.'/classes/API.php';
-require_once __DIR__.'/classes/Router.php';
-require_once __DIR__.'/classes/RequestAPI.php';
-require_once __DIR__.'/classes/Database.php';
-require_once __DIR__.'/classes/Model.php';
-require_once __DIR__.'/classes/Player.php';
-
-Model::verifyName();   
-Model::verifyOpcao();
-
-$database = new Database;
-$database->makeConnection();
-$database->createTables();
-
-$router = new Router();
-$router->setMethod($_SERVER['REQUEST_METHOD']);
-$router->setRoute($_SERVER['REQUEST_URI']); 
-
-$router->verifyMethod($database);
-
-if (!isset($_SESSION['questionNumber'])){
-    $_SESSION['questionNumber'] = 1;
-} 
-
+var_dump($_SESSION['name']);
+var_dump($_SESSION['corretas']);
+var_dump($_SESSION['incorretas']);
 
 ?>
 
@@ -62,10 +39,10 @@ if (!isset($_SESSION['questionNumber'])){
     <?php
         if($_SESSION['questionNumber'] < 5) 
         {
-            $action = "jogo.php";
+            $action = "redirectJogo.php";
             $text = "Próxima Pergunta";
         } else {
-            $action = "leaderboard.php";
+            $action = "redirectMatches.php";
             $text = "Terminar Jogo";
         }
     
@@ -103,12 +80,12 @@ if (!isset($_SESSION['questionNumber'])){
             iniciarContador(); 
         };
     </script>
-    <form action=index.php method=POST enctype=multiplart/form-data>
+    <form action=redirectIndex.php method=POST enctype=multiplart/form-data>
         <div class="salvar">
         <input type=submit name=cancel value='Cancelar Jogo' method=POST >
         </div>
     </form>
-    <form action=index.php method=POST enctype=multiplart/form-data>
+    <form action=redirectIndex.php method=POST enctype=multiplart/form-data>
         <div class="salvar">
             <input type=submit value=Home method=POST >
         </div>

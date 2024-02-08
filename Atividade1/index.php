@@ -2,17 +2,6 @@
 
 session_start();
 
-require_once __DIR__.'/classes/Router.php';
-require_once __DIR__.'/classes/Database.php';
-require_once __DIR__.'/classes/Model.php';
-require_once __DIR__.'/classes/Player.php';
-
-$database = new Database;
-$database->makeConnection();
-$database->createTables();
-
-Model::verifyGameCancelled();
-
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +23,7 @@ Model::verifyGameCancelled();
         <h1>Trivia</h1>
     </div>
     <div class="form">
-        <form action="jogo.php" method="POST" enctype="multiplart/form-data">
+        <form action="redirectJogo.php" method="POST" enctype="multiplart/form-data">
             <input type="hidden" name="insert" value="insert">
             <label for="name">Digite seu Nome:</label>
             <input type="text" name="name" placeholder="Nome">
@@ -50,13 +39,13 @@ Model::verifyGameCancelled();
         </form>
         <?php
         if (isset($_SESSION['question'])) {
-            echo "<form action=jogo.php method=GET enctype=multiplart/form-data>
+            echo "<form action=redirectJogo.php method=POST enctype=multiplart/form-data>
             <button type=submit>Continuar Jogo</button>
             </form>";
         }
         ?>
 
-        <form action="leaderboard.php" method="GET" enctype="multiplart/form-data">
+        <form action="redirectMatches.php" method="POST" enctype="multiplart/form-data">
             <button type="submit">Partidas</button>
         </form>
     </div>
