@@ -57,7 +57,16 @@ while ($exit==false)
             echo "\n    Cadastrar Usuário: \n";
             $usuario = new Usuarios();
             $usuario->nome = readline("Nome do usuário: ");
-            $usuario->email = readline("E-mail do usuário: ");
+            $validar = false;
+            while($validar == false){
+            $email = readline("E-mail do usuário: ");
+                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $usuario->email = $email;
+                    $validar = true;
+                } else {
+                    echo "Formato de e-mail inválido!\n";
+                }
+            }
             $database->insert($usuario);
             break;
         case 4:
