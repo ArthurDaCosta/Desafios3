@@ -13,20 +13,22 @@ $database->createTables();
 $exit = false;
 while ($exit==false)
 {
-    echo "\n1 - Cadastrar Projeto\n";
-    echo "2 - Cadastrar Tarefa\n";
-    echo "3 - Cadastrar Usuário\n";
-    echo "4 - Atribuir Tarefa\n";
-    echo "5 - Listar Projetos\n";
-    echo "6 - Listar Tarefas\n";
-    echo "7 - Listar Usuários\n";
-    echo "8 - Listar Atribuições\n";
-    echo "9 - Sair\n";
+    echo "\n[1] - Cadastrar Projeto\n";
+    echo "[2] - Cadastrar Tarefa\n";
+    echo "[3] - Cadastrar Usuário\n";
+    echo "[4] - Atribuir Tarefa\n";
+    echo "[5] - Listar Projetos\n";
+    echo "[6] - Listar Tarefas\n";
+    echo "[7] - Listar Usuários\n";
+    echo "[8] - Listar Atribuições\n";
+    echo "[9] - Sair\n";
     $escolha = (int) readline("Escolha: ");
 
     switch($escolha)
     {
         case 1:
+
+            echo "\n    Cadastrar Projeto: \n";
             $projeto = new Projetos();
             $projeto->nome = readline("Nome do projeto: ");
             $projeto->descricao = readline("Descrição do projeto: ");
@@ -35,6 +37,8 @@ while ($exit==false)
             $database->insert($projeto);
             break;
         case 2:
+
+            echo "\n    Cadastrar Tarefa: \n";
             $tarefa = new Tarefas();
             $tarefa->descricao = readline("Descrição da tarefa: ");
             if ($database->getOne("Projetos", $idProjeto = readline("ID do Projeto: ")))
@@ -49,12 +53,16 @@ while ($exit==false)
             $database->insert($tarefa);
             break;
         case 3:
+
+            echo "\n    Cadastrar Usuário: \n";
             $usuario = new Usuarios();
             $usuario->nome = readline("Nome do usuário: ");
             $usuario->email = readline("E-mail do usuário: ");
             $database->insert($usuario);
             break;
         case 4:
+
+            echo "\n    Atribuir Tarefas: \n";
             $atribuicao = new Atribuicoes();
             echo "\n";
             if ($database->getOne("Usuarios", $idUsuario = readline("ID do Usuário: ")))
@@ -76,6 +84,8 @@ while ($exit==false)
             $database->insert($atribuicao);
             break;
         case 5:
+
+            echo "\n    Listar Projetos: \n";
             $array = $database->getAll("Projetos");
 
             echo "\n";
@@ -94,7 +104,10 @@ while ($exit==false)
                 echo "\n";
             }
             break;
+
         case 6:
+
+            echo "\n    Listar Tarefas: \n";
             $array = $database->getAll("Tarefas");
 
             echo "\n";
@@ -114,6 +127,8 @@ while ($exit==false)
             }
             break;
         case 7:
+
+            echo "\n    Listar Usuários: \n";
             $array = $database->getAll("Usuarios");
 
             echo "\n";
@@ -133,6 +148,8 @@ while ($exit==false)
             }
             break;
         case 8:
+
+            echo "\n    Listar Atribuições: \n";
             $array = $database->getAll("Atribuicoes");
 
             echo "\n";
@@ -152,6 +169,8 @@ while ($exit==false)
             }
             break;
         case 9:
+
+            echo "\n    Encerrando... \n";
             $exit = true;
             break;
     }
