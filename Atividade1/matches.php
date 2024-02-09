@@ -6,6 +6,7 @@ require_once 'classes/Database.php';
 
 $database = new Database();
 $database->makeConnection();
+$database->createTables();
 
 $matches = $database->getAll('player') ;
 if (empty($matches)) {

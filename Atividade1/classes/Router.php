@@ -33,6 +33,9 @@ class Router
             if (!isset($_SESSION['question'])){
                 Controller::getQuestions($database); 
             } 
+        } elseif(!isset($_SESSION['question'])) {
+            header("location: index.php");
+            exit;
         }
     }
 }

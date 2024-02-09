@@ -23,7 +23,7 @@ session_start();
         <h1>Trivia</h1>
     </div>
     <div class="form">
-        <form action="redirectJogo.php" method="POST" enctype="multiplart/form-data">
+        <form action="redirectGame.php" method="POST" enctype="multiplart/form-data">
             <input type="hidden" name="insert" value="insert">
             <label for="name">Digite seu Nome:</label>
             <input type="text" name="name" placeholder="Nome">
@@ -39,7 +39,7 @@ session_start();
         </form>
         <?php
         if (isset($_SESSION['question'])) {
-            echo "<form action=redirectJogo.php method=POST enctype=multiplart/form-data>
+            echo "<form action=redirectGame.php method=POST enctype=multiplart/form-data>
             <button type=submit>Continuar Jogo</button>
             </form>";
         }
