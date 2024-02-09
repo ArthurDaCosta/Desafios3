@@ -73,7 +73,7 @@ while ($exit==false)
 
             echo "\n    Atribuir Tarefas: \n";
             $atribuicao = new Atribuicoes();
-            echo "\n";
+    
             if ($database->getOne("Usuarios", $idUsuario = readline("ID do Usuário: ")))
             {
                 $atribuicao->usuario_id = $idUsuario;
